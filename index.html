@@ -8,6 +8,8 @@
 <meta property="og:title" content="Angels Network — dê uma tarde, mude uma vida" />
 <meta property="og:description" content="Voluntariado de companhia a idosos no sul de Portugal. Alentejo e Algarve." />
 <meta property="og:type" content="website" />
+<meta name="theme-color" content="#1C5340" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M4 14c4-1 6-4 8-9 2 5 4 8 8 9-4 1-6 3-8 6-2-3-4-5-8-6Z' fill='%231C5340'/></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -228,6 +230,22 @@ footer a{display:block;font-size:14px;color:#BCD0C0;padding:5px 0}footer a:hover
 .need-row .nt{font-family:var(--ff-ui);font-weight:700;color:var(--ink);font-size:14.5px}
 .need-row .nc{font-size:12.5px;color:var(--sub)}
 .need-row .btn{margin-left:auto;padding:10px 15px;font-size:13px}
+
+/* --- polish pass --- */
+:focus-visible{outline:2.5px solid var(--gold);outline-offset:3px;border-radius:8px}
+.nav{transition:box-shadow .3s ease,background .3s ease}
+.nav.scrolled{box-shadow:0 8px 30px rgba(28,40,28,.09);background:rgba(247,243,236,.95)}
+.btn-primary:hover,.btn-gold:hover{transform:translateY(-2px)}
+.card-img img{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.card:hover .card-img img{transform:scale(1.06)}
+.hero-art .ph,.hero-badge{will-change:transform}
+.nav-burger{width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line);color:var(--ink);background:var(--white);place-items:center}
+.nav-burger svg{width:22px;height:22px}
+.mobile-menu{display:none;flex-direction:column;background:var(--paper);border-bottom:1px solid var(--line)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{padding:15px 24px;font-weight:600;color:var(--body);border-top:1px solid var(--line-soft)}
+.mobile-menu a:active{background:var(--white)}
+@media(min-width:921px){.mobile-menu{display:none!important}}
 </style>
 </head>
 <body>
@@ -248,8 +266,11 @@ footer a{display:block;font-size:14px;color:#BCD0C0;padding:5px 0}footer a:hover
   </div>
   <div class="nav-cta">
     <a href="#match" class="btn btn-primary">Quero ajudar</a>
-    <button class="nav-burger btn btn-ghost" onclick="document.querySelector('.nav-links').style.display='flex'">☰</button>
+    <button class="nav-burger" id="burger" aria-label="Abrir menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
   </div>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#pessoas">As pessoas</a><a href="#board">Oportunidades</a><a href="#match">Match inteligente</a><a href="#reloc">Mudar-se</a><a href="#how">Como funciona</a>
 </div></nav>
 
 <a id="top"></a>
@@ -535,11 +556,42 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSenior();});
 
 render();
 renderPeople();
+// nav shadow + mobile menu (functional, always on)
+const _nav=document.querySelector('.nav');
+addEventListener('scroll',()=>_nav.classList.toggle('scrolled',scrollY>16),{passive:true});
+const _b=document.getElementById('burger'),_mm=document.getElementById('mobileMenu');
+if(_b)_b.addEventListener('click',()=>_mm.classList.toggle('open'));
+if(_mm)_mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>_mm.classList.remove('open')));
+
 window.addEventListener('load',()=>{
-  if(!window.gsap||matchMedia('(prefers-reduced-motion:reduce)').matches){document.querySelectorAll('.reveal').forEach(e=>e.style.opacity=1);return;}
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(!window.gsap||reduce){document.querySelectorAll('.reveal').forEach(e=>{e.style.opacity=1;e.style.transform='none';});return;}
   gsap.registerPlugin(ScrollTrigger);
-  gsap.utils.toArray('.reveal').forEach(el=>{
+  // below-the-fold reveals (hero handled by its own sequence)
+  gsap.utils.toArray('.reveal').forEach(el=>{ if(el.closest('.hero'))return;
     gsap.to(el,{opacity:1,y:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}});
+  });
+  // hero load sequence
+  gsap.timeline({defaults:{ease:'power3.out'}})
+    .to('.hero .eyebrow',{opacity:1,y:0,duration:.6})
+    .to('.hero h1',{opacity:1,y:0,duration:.9},'-=.35')
+    .to('.hero .lead',{opacity:1,y:0,duration:.6},'-=.55')
+    .to('.hero-cta',{opacity:1,y:0,duration:.6},'-=.45')
+    .to('.hero-meta',{opacity:1,y:0,duration:.6},'-=.5')
+    .to('.hero-art',{opacity:1,y:0,duration:.95},'-=.7');
+  // cursor parallax on hero art (desktop only)
+  if(matchMedia('(min-width:920px)').matches){
+    const art=document.querySelector('.hero-art'),phs=[...art.querySelectorAll('.ph')];
+    const qx=phs.map(p=>gsap.quickTo(p,'xPercent',{duration:.7,ease:'power3'})),qy=phs.map(p=>gsap.quickTo(p,'yPercent',{duration:.7,ease:'power3'}));
+    art.addEventListener('mousemove',e=>{const r=art.getBoundingClientRect(),dx=(e.clientX-r.left)/r.width-.5,dy=(e.clientY-r.top)/r.height-.5;phs.forEach((p,i)=>{const d=(i+1)*2.4;qx[i](dx*d);qy[i](dy*d);});});
+    art.addEventListener('mouseleave',()=>phs.forEach((p,i)=>{qx[i](0);qy[i](0);}));
+  }
+  // stat count-up
+  document.querySelectorAll('.stat b').forEach(el=>{
+    const raw=el.textContent.trim(),m=raw.match(/[\d ]*\d/);if(!m)return;
+    const num=parseInt(m[0].replace(/\D/g,''),10);if(!num)return;
+    const pre=raw.slice(0,m.index),suf=raw.slice(m.index+m[0].length),o={v:0};
+    ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:()=>gsap.to(o,{v:num,duration:1.5,ease:'power2.out',onUpdate:()=>el.textContent=pre+Math.round(o.v).toLocaleString('pt-PT')+suf})});
   });
 });
 </script>
