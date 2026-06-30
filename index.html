@@ -188,6 +188,46 @@ footer a{display:block;font-size:14px;color:#BCD0C0;padding:5px 0}footer a:hover
   .foot-grid{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* CAA logo */
+.brand .logo{height:42px;width:auto;display:block}
+.foot-logo{height:64px;width:auto;margin-bottom:14px;filter:brightness(0) invert(1)}
+
+/* people board */
+.pgrid{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.pcard{background:var(--white);border-radius:var(--r-l);padding:22px;border:1px solid var(--line-soft);box-shadow:var(--shadow-s);cursor:pointer;transition:transform .25s ease,box-shadow .25s ease;display:flex;flex-direction:column}
+.pcard:hover{transform:translateY(-5px);box-shadow:var(--shadow-m)}
+.pcard-top{display:flex;gap:14px;align-items:center}
+.pavatar{width:58px;height:58px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:var(--ff-display);font-weight:600;font-size:21px;color:#fff;background:linear-gradient(135deg,var(--green),#2f7a5e)}
+.pavatar.g{background:linear-gradient(135deg,var(--gold-d),var(--gold))}
+.pcard-top h3{font-size:19px}
+.pmeta{font-size:13px;color:var(--sub);font-weight:600}
+.pbio{font-size:14px;color:var(--body);margin-top:14px;line-height:1.55}
+.pneeds{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.nchip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--green-d);background:var(--green-soft);padding:6px 11px;border-radius:999px}
+.nchip svg{width:13px;height:13px;stroke:var(--green);fill:none;stroke-width:1.9}
+.pcard-foot{margin-top:auto;padding-top:16px;display:flex;align-items:center;justify-content:space-between}
+.panjos{font-size:12.5px;color:var(--sub);font-weight:600}
+.plink{font-size:13px;font-weight:700;color:var(--green)}
+.pnote{margin-top:22px;font-size:12.5px;color:var(--sub);display:flex;gap:8px;align-items:center}
+.pnote svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:1.8}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:flex-end;justify-content:center}
+.modal.open{display:flex}
+.modal-bg{position:absolute;inset:0;background:rgba(18,28,22,.5);backdrop-filter:blur(3px)}
+.modal-card{position:relative;background:var(--cream);width:100%;max-width:560px;max-height:90vh;overflow:auto;border-radius:26px 26px 0 0;padding:28px;box-shadow:var(--shadow-l)}
+@media(min-width:600px){.modal{align-items:center}.modal-card{border-radius:26px}}
+.modal-x{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;background:var(--inset,#EFE9DC);display:grid;place-items:center;font-size:18px;color:var(--ink)}
+.modal-head{display:flex;gap:15px;align-items:center}
+.modal-head h3{font-size:25px}
+.modal-bio{margin-top:16px;font-size:15px;line-height:1.6}
+.need-row{display:flex;gap:13px;align-items:center;background:var(--white);border:1px solid var(--line-soft);border-radius:16px;padding:15px;margin-top:12px}
+.need-ic{width:42px;height:42px;border-radius:12px;background:var(--green-soft);display:grid;place-items:center;flex:none}
+.need-ic svg{width:21px;height:21px;stroke:var(--green);fill:none;stroke-width:1.8}
+.need-row .nt{font-family:var(--ff-ui);font-weight:700;color:var(--ink);font-size:14.5px}
+.need-row .nc{font-size:12.5px;color:var(--sub)}
+.need-row .btn{margin-left:auto;padding:10px 15px;font-size:13px}
 </style>
 </head>
 <body>
@@ -195,13 +235,15 @@ footer a{display:block;font-size:14px;color:#BCD0C0;padding:5px 0}footer a:hover
 <!-- NAV -->
 <nav class="nav"><div class="wrap nav-in">
   <a class="brand" href="#top">
-    <span class="wing"><svg viewBox="0 0 24 24" fill="none"><path d="M4 14c4-1 6-4 8-9 2 5 4 8 8 9-4 1-6 3-8 6-2-3-4-5-8-6Z" stroke-width="1.6"/></svg></span>
+    <img class="logo" src="assets/caa-logo.png" alt="Community Angels Association" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+    <span class="wing" style="display:none"><svg viewBox="0 0 24 24" fill="none"><path d="M4 14c4-1 6-4 8-9 2 5 4 8 8 9-4 1-6 3-8 6-2-3-4-5-8-6Z" stroke-width="1.6"/></svg></span>
     Angels Network
   </a>
   <div class="nav-links">
+    <a href="#pessoas">As pessoas</a>
     <a href="#board">Oportunidades</a>
     <a href="#match">Match inteligente</a>
-    <a href="#reloc">Mudar-se para ajudar</a>
+    <a href="#reloc">Mudar-se</a>
     <a href="#how">Como funciona</a>
   </div>
   <div class="nav-cta">
@@ -270,8 +312,25 @@ footer a{display:block;font-size:14px;color:#BCD0C0;padding:5px 0}footer a:hover
   </div>
 </div></section>
 
+<!-- PEOPLE BOARD -->
+<section id="pessoas"><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow">As pessoas</p><h2>Conheça quem espera por si</h2><p class="lead">Não são tarefas — são pessoas. Veja quem vive só perto de si, conheça as suas necessidades, e escolha como quer ajudar.</p></div>
+  <div class="board-bar reveal">
+    <div class="filters" id="pfilters">
+      <button class="fchip on" data-pf="all">Tudo</button>
+      <button class="fchip" data-pf="alentejo">Alentejo</button>
+      <button class="fchip" data-pf="algarve">Algarve</button>
+      <button class="fchip" data-pf="companhia">Querem companhia</button>
+      <button class="fchip" data-pf="boleia">Precisam de boleia</button>
+    </div>
+  </div>
+  <div class="pgrid" id="pgrid"></div>
+  <div class="pnote reveal"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>Perfis partilhados com consentimento e protegidos — os dados completos só ficam visíveis após a sua verificação.</div>
+</div></section>
+
 <!-- JOB BOARD -->
 <section id="board"><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow" style="color:var(--gold-d)">Ou por tarefa</p></div>
   <div class="sec-head reveal"><p class="eyebrow">O quadro</p><h2>Oportunidades perto de si</h2><p class="lead">Cada cartão é uma tarde na vida de alguém. Escolha por causa, zona ou disponibilidade.</p></div>
   <div class="board-bar reveal">
     <div class="filters" id="filters">
@@ -347,6 +406,7 @@ footer a{display:block;font-size:14px;color:#BCD0C0;padding:5px 0}footer a:hover
 <footer><div class="wrap">
   <div class="foot-grid">
     <div>
+      <img class="foot-logo" src="assets/caa-logo.png" alt="Community Angels Association" onerror="this.style.display='none'">
       <div class="foot-brand">Angels Network</div>
       <p style="font-size:14px;max-width:24em">Companhia para quem vive só, no Baixo Alentejo e no Algarve. Uma associação comunitária sem fins lucrativos.</p>
     </div>
@@ -354,8 +414,14 @@ footer a{display:block;font-size:14px;color:#BCD0C0;padding:5px 0}footer a:hover
     <div><h4>Regiões</h4><a href="#board">Beja · Serpa · Moura</a><a href="#board">Castro Verde · Mértola</a><a href="#board">Faro · Tavira · Lagos</a><a href="#board">À distância</a></div>
     <div><h4>Também no telemóvel</h4><a href="https://angel-team7.github.io/angels-network/">App para voluntários ↗</a><a href="#match">Falar connosco</a><a href="#">WhatsApp 935 856 033</a></div>
   </div>
-  <div class="foot-bot"><span>© 2026 Community Angels · Baixo Alentejo, Portugal</span><span>Feito com cuidado 🪽</span></div>
+  <div class="foot-bot"><span>© 2026 Community Angels Association · Baixo Alentejo &amp; Algarve, Portugal</span><span>Feito com cuidado 🪽</span></div>
 </div></footer>
+
+<!-- SENIOR MODAL -->
+<div class="modal" id="seniorModal" role="dialog" aria-modal="true" aria-label="Necessidades">
+  <div class="modal-bg" onclick="closeSenior()"></div>
+  <div class="modal-card" id="seniorBody"></div>
+</div>
 
 <script>
 const OPP=[
@@ -428,7 +494,47 @@ function highlight(id){
   setTimeout(()=>{const el=document.querySelector(`.card[data-id="${id}"]`);if(el){el.classList.add('match-hit');el.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>el.classList.remove('match-hit'),2600);}},120);
 }
 
+// PEOPLE BOARD
+const SENIORS=[
+ {id:1,name:"Dona Amélia",age:82,town:"Beja",region:"alentejo",bio:"Foi costureira a vida toda. Vive só desde que enviuvou e adora falar do tempo em que cosia para a vila.",anjos:1,needs:[["companhia","Companhia à tarde","1× por semana"],["apoio","Ajuda a ler cartas e receitas","quando precisa"]]},
+ {id:2,name:"Sr. Joaquim",age:78,town:"Serpa",region:"alentejo",bio:"Antigo trabalhador rural. Os filhos emigraram e ele tem dificuldade em chegar às consultas sozinho.",anjos:0,needs:[["boleia","Boleia ao centro de saúde","1× por mês"],["companhia","Conversa no caminho","quando puder"]]},
+ {id:3,name:"Dona Rosa",age:85,town:"Castro Verde",region:"alentejo",bio:"O mercado de sexta é o seu programa da semana, mas já não consegue carregar os sacos sozinha.",anjos:1,needs:[["apoio","Companhia no mercado","1× por semana"],["evento","Vir aos convívios","2× por mês"]]},
+ {id:4,name:"Dona Iva",age:80,town:"Tavira",region:"algarve",bio:"Gosta de passear à beira-rio ao fim da tarde, mas tem medo de cair se for sozinha.",anjos:0,needs:[["companhia","Passeios acompanhados","2× por semana"]]},
+ {id:5,name:"Sr. Manuel",age:88,town:"Faro",region:"algarve",bio:"Quase sem família por perto. Passa dias inteiros sem falar com ninguém.",anjos:2,needs:[["companhia","Chamadas de companhia","semanal"],["boleia","Boleia a recados","quando precisa"]]},
+ {id:6,name:"Dona Lurdes",age:79,town:"Moura",region:"alentejo",bio:"Cheia de histórias e de vontade de conviver — só lhe falta companhia para sair de casa.",anjos:1,needs:[["evento","Vir aos lanches-convívio","2× por mês"],["companhia","Tardes de conversa","1× por semana"]]},
+];
+const initials=n=>n.replace('Dona ','').replace('Sr. ','').trim()[0];
+let pfilter='all';
+function pcardHTML(p,i){
+  const chips=p.needs.map(n=>`<span class="nchip"><svg viewBox="0 0 24 24" fill="none">${CICON[n[0]]}</svg>${n[1]}</span>`).join('');
+  return `<article class="pcard" data-region="${p.region}" data-needs="${p.needs.map(n=>n[0]).join(' ')}" onclick="openSenior(${p.id})">
+    <div class="pcard-top"><div class="pavatar ${i%2?'g':''}">${initials(p.name)}</div><div><h3>${p.name}, ${p.age}</h3><span class="pmeta">${p.town}</span></div></div>
+    <p class="pbio">${p.bio}</p><div class="pneeds">${chips}</div>
+    <div class="pcard-foot"><span class="panjos">${p.anjos?p.anjos+' Anjo'+(p.anjos>1?'s já ajudam':' já ajuda'):'Ainda sem Anjo'}</span><span class="plink">Ver o que precisa →</span></div>
+  </article>`;
+}
+function renderPeople(){
+  const list=SENIORS.filter(p=>pfilter==='all'||p.region===pfilter||p.needs.some(n=>n[0]===pfilter));
+  document.getElementById('pgrid').innerHTML=list.map((p,i)=>pcardHTML(p,i)).join('');
+  if(window.gsap)gsap.from('.pcard',{opacity:0,y:24,duration:.5,stagger:.06,ease:'power2.out'});
+}
+document.getElementById('pfilters').addEventListener('click',e=>{const b=e.target.closest('.fchip');if(!b)return;document.querySelectorAll('#pfilters .fchip').forEach(x=>x.classList.remove('on'));b.classList.add('on');pfilter=b.dataset.pf;renderPeople();});
+function openSenior(id){
+  const p=SENIORS.find(x=>x.id===id);if(!p)return;
+  const first=p.name.replace('Dona ','').replace('Sr. ','').split(' ')[0];
+  const needs=p.needs.map(n=>`<div class="need-row"><div class="need-ic"><svg viewBox="0 0 24 24" fill="none">${CICON[n[0]]}</svg></div><div><div class="nt">${n[1]}</div><div class="nc">${n[2]}</div></div><button class="btn btn-primary" onclick="alert('Obrigado! Vamos pô-lo em contacto para ajudar a/o ${first} com: ${n[1]}.')">Quero ajudar</button></div>`).join('');
+  document.getElementById('seniorBody').innerHTML=`<button class="modal-x" onclick="closeSenior()" aria-label="Fechar">✕</button>
+    <div class="modal-head"><div class="pavatar" style="width:62px;height:62px;font-size:23px">${initials(p.name)}</div><div><h3>${p.name}, ${p.age}</h3><span class="pmeta">${p.town} · ${p.region==='algarve'?'Algarve':'Baixo Alentejo'}</span></div></div>
+    <p class="modal-bio">${p.bio}</p>
+    <p class="eyebrow" style="margin-top:22px;color:var(--gold-d)">O que ${first} precisa</p>${needs}
+    <p class="pnote" style="margin-top:18px"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>Escolha uma necessidade. Falamos consigo, fazemos a verificação e apresentamo-lo a/o ${first}.</p>`;
+  document.getElementById('seniorModal').classList.add('open');document.body.style.overflow='hidden';
+}
+function closeSenior(){document.getElementById('seniorModal').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSenior();});
+
 render();
+renderPeople();
 window.addEventListener('load',()=>{
   if(!window.gsap||matchMedia('(prefers-reduced-motion:reduce)').matches){document.querySelectorAll('.reveal').forEach(e=>e.style.opacity=1);return;}
   gsap.registerPlugin(ScrollTrigger);
