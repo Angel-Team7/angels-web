@@ -3,596 +3,444 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Angels Network — Voluntariado no Sul de Portugal · Alentejo & Algarve</title>
-<meta name="description" content="Rede de voluntários que fazem companhia a pessoas idosas que vivem sós, no Baixo Alentejo e no Algarve. Encontre a oportunidade certa — pelo quadro ou pelo match inteligente." />
-<meta property="og:title" content="Angels Network — dê uma tarde, mude uma vida" />
-<meta property="og:description" content="Voluntariado de companhia a idosos no sul de Portugal. Alentejo e Algarve." />
-<meta property="og:type" content="website" />
+<title>Angels Network — Voluntariado no sul de Portugal</title>
+<meta name="description" content="A plataforma que liga voluntários a pessoas idosas que vivem sós, no Baixo Alentejo e no Algarve. Quadro de oportunidades + match inteligente." />
+<meta property="og:title" content="Angels Network — encontre quem precisa de si" />
+<meta property="og:description" content="Voluntariado de companhia a idosos no sul de Portugal." />
 <meta name="theme-color" content="#1C5340" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M4 14c4-1 6-4 8-9 2 5 4 8 8 9-4 1-6 3-8 6-2-3-4-5-8-6Z' fill='%231C5340'/></svg>" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <style>
 :root{
-  --green:#1C5340; --green-d:#123A2C; --green-soft:#E4ECE6;
-  --gold:#C8A24A; --gold-d:#8C6E26; --gold-soft:#F3E8CD;
-  --cream:#F7F3EC; --paper:#FCFAF4; --white:#fff;
-  --ink:#1B201A; --body:#4B5048; --sub:#8A8474;
-  --line:rgba(27,32,26,.10); --line-soft:rgba(27,32,26,.055);
-  --shadow-s:0 4px 14px rgba(28,40,28,.06);
-  --shadow-m:0 16px 40px rgba(28,40,28,.12);
-  --shadow-l:0 30px 70px rgba(28,40,28,.18);
-  --r:18px; --r-l:26px; --r-xl:34px;
-  --ff-display:'Fraunces',Georgia,serif; --ff-ui:'Manrope',-apple-system,sans-serif;
-  --max:1200px;
+  --bg:#FBFAF7; --bg2:#F3F2EC; --surface:#fff;
+  --green:#1C5340; --green-2:#22674E; --green-ink:#123C2C; --green-soft:#E9F1EC;
+  --gold:#C8A24A; --gold-soft:#F7EFD8; --gold-ink:#8A6B22;
+  --ink:#12160F; --body:#4B524A; --sub:#8A8D85;
+  --line:rgba(17,21,16,.08); --line2:rgba(17,21,16,.14);
+  --sh-s:0 1px 2px rgba(16,24,20,.04),0 4px 14px rgba(16,24,20,.05);
+  --sh-m:0 8px 24px rgba(16,24,20,.08),0 2px 6px rgba(16,24,20,.04);
+  --sh-l:0 30px 70px rgba(16,24,20,.14),0 8px 22px rgba(16,24,20,.07);
+  --r:14px; --r-l:20px; --r-xl:28px;
+  --ff:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --max:1180px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--ff-ui);background:var(--cream);color:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
+body{font-family:var(--ff);background:var(--bg);color:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-h1,h2,h3{font-family:var(--ff-display);color:var(--ink);font-weight:600;letter-spacing:-.02em;line-height:1.05}
-.eyebrow{font-family:var(--ff-ui);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-d)}
-.lead{font-size:clamp(17px,2vw,20px);color:var(--body);line-height:1.6}
-.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--ff-ui);font-weight:700;font-size:15px;padding:14px 22px;border-radius:999px;transition:transform .15s ease,box-shadow .2s ease,background .2s ease}
-.btn:active{transform:scale(.98)}
-.btn-primary{background:var(--green);color:#FBF7EE;box-shadow:var(--shadow-s)}
-.btn-primary:hover{background:var(--green-d);box-shadow:var(--shadow-m)}
-.btn-gold{background:var(--gold);color:#2A2010}.btn-gold:hover{background:#b88f37}
-.btn-ghost{border:1.5px solid var(--line);color:var(--ink)}.btn-ghost:hover{background:var(--white)}
-.btn svg{width:18px;height:18px}
-.icon{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+h1,h2,h3{color:var(--ink);font-weight:800;letter-spacing:-.035em;line-height:1.05}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:12.5px;letter-spacing:.02em;color:var(--green);background:var(--green-soft);padding:6px 13px;border-radius:999px}
+.eyebrow.gold{color:var(--gold-ink);background:var(--gold-soft)}
+.lead{font-size:clamp(16px,1.6vw,18.5px);color:var(--body);line-height:1.65}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:15px;padding:12px 20px;border-radius:12px;transition:transform .18s cubic-bezier(.2,.7,.2,1),box-shadow .2s,background .2s,border-color .2s}
+.btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.btn-primary{background:var(--green);color:#F4F8F5;box-shadow:var(--sh-s)}
+.btn-primary:hover{background:var(--green-2);transform:translateY(-2px);box-shadow:var(--sh-m)}
+.btn-ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line2)}
+.btn-ghost:hover{border-color:var(--green);transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:#2A2010}.btn-gold:hover{background:#bb9540;transform:translateY(-2px)}
+.icon{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 
 /* nav */
-.nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(14px);background:rgba(247,243,236,.82);border-bottom:1px solid var(--line-soft)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:70px}
-.brand{display:flex;align-items:center;gap:11px;font-family:var(--ff-display);font-weight:600;font-size:19px;color:var(--ink);letter-spacing:-.01em}
-.brand .wing{width:34px;height:34px;border-radius:50%;background:var(--green-soft);display:grid;place-items:center;border:1px solid rgba(28,83,64,.25)}
-.brand .wing svg{width:19px;height:19px;stroke:var(--green)}
-.nav-links{display:flex;align-items:center;gap:30px}
-.nav-links a{font-weight:600;font-size:14.5px;color:var(--body)}.nav-links a:hover{color:var(--ink)}
-.nav-cta{display:flex;align-items:center;gap:12px}
-.nav-burger{display:none}
+.nav{position:sticky;top:0;z-index:60;background:rgba(251,250,247,.78);backdrop-filter:saturate(150%) blur(16px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+.nav.scrolled{border-color:var(--line);box-shadow:0 6px 22px rgba(16,24,20,.05)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;color:var(--ink);letter-spacing:-.02em}
+.brand .logo{height:38px;width:auto}
+.brand .wing{width:32px;height:32px;border-radius:9px;background:var(--green-soft);display:grid;place-items:center}
+.brand .wing svg{width:18px;height:18px;stroke:var(--green);fill:none;stroke-width:1.6}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-weight:600;font-size:14px;color:var(--body);transition:color .15s}.nav-links a:hover{color:var(--ink)}
+.nav-cta{display:flex;align-items:center;gap:10px}
+.nav-burger{display:none;width:42px;height:42px;border-radius:11px;border:1px solid var(--line2);background:var(--surface);place-items:center;color:var(--ink)}
+.mobile-menu{display:none;flex-direction:column;background:var(--surface);border-bottom:1px solid var(--line)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{padding:14px 24px;font-weight:600;color:var(--body);border-top:1px solid var(--line)}
 
 /* hero */
-.hero{position:relative;padding:74px 0 86px;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
-.hero h1{font-size:clamp(40px,6.4vw,76px);font-weight:600}
-.hero h1 em{font-style:italic;color:var(--green)}
-.hero .lead{margin-top:22px;max-width:30em}
-.hero-cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
-.hero-meta{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap}
-.hero-meta .m{display:flex;flex-direction:column}
-.hero-meta b{font-family:var(--ff-display);font-size:26px;color:var(--ink);font-weight:600}
-.hero-meta span{font-size:12.5px;color:var(--sub);font-weight:600}
-.hero-art{position:relative;height:clamp(380px,46vw,520px)}
-.hero-art .ph{position:absolute;border-radius:var(--r-l);overflow:hidden;box-shadow:var(--shadow-l);background:var(--green-soft)}
-.hero-art .ph img{width:100%;height:100%;object-fit:cover}
-.hero-art .p1{inset:0 30% 26% 0}
-.hero-art .p2{width:46%;height:42%;right:0;top:8%;border-radius:var(--r-l)}
-.hero-art .p3{width:42%;height:38%;right:8%;bottom:0}
-.hero-badge{position:absolute;left:6%;bottom:8%;background:var(--white);border-radius:16px;padding:12px 16px;box-shadow:var(--shadow-m);display:flex;align-items:center;gap:11px;z-index:3}
-.hero-badge .dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(28,83,64,.18)}
-.hero-badge b{font-family:var(--ff-ui);font-weight:700;color:var(--ink);font-size:13.5px}
-.hero-badge span{font-size:12px;color:var(--sub)}
+.hero{position:relative;padding:72px 0 60px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero-bg .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5}
+.hero-bg .b1{width:520px;height:520px;background:#bfe0cd;left:-160px;top:-120px}
+.hero-bg .b2{width:440px;height:440px;background:#f1e3b8;right:-120px;top:40px;opacity:.45}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.04fr .96fr;gap:50px;align-items:center}
+.hero h1{font-size:clamp(38px,5.6vw,68px);font-weight:800}
+.hero h1 .hl{background:linear-gradient(120deg,var(--green),#2f8a64);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{margin-top:20px;max-width:31em}
+.hero-cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.hero-trust{display:flex;align-items:center;gap:18px;margin-top:30px;flex-wrap:wrap;color:var(--sub);font-size:13px;font-weight:600}
+.hero-trust .ck{display:flex;align-items:center;gap:7px}.hero-trust svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:2}
 
-/* section scaffolding */
-section{padding:72px 0}
-.sec-head{max-width:40em}
-.sec-head h2{font-size:clamp(30px,4.3vw,48px);margin-top:14px}
-.sec-head p{margin-top:14px}
+/* hero product mock */
+.mock{position:relative;perspective:1400px}
+.mock-panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-xl);box-shadow:var(--sh-l);padding:16px;transform:rotateY(-9deg) rotateX(4deg);transform-style:preserve-3d}
+.mock-head{display:flex;align-items:center;gap:8px;padding:6px 8px 14px}
+.mock-dot{width:9px;height:9px;border-radius:50%;background:var(--line2)}
+.mock-search{margin-left:8px;flex:1;height:30px;border-radius:8px;background:var(--bg2);display:flex;align-items:center;padding:0 12px;font-size:12px;color:var(--sub);font-weight:600}
+.mock-card{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:14px;margin-top:10px;background:var(--surface)}
+.mock-card img{width:56px;height:56px;border-radius:11px;object-fit:cover;flex:none}
+.mock-card .t{font-weight:700;font-size:13.5px;color:var(--ink);line-height:1.25}
+.mock-card .m{font-size:11.5px;color:var(--sub);margin-top:3px}
+.mock-card .pill{margin-left:auto;font-size:11px;font-weight:700;color:var(--green);background:var(--green-soft);padding:5px 9px;border-radius:999px;flex:none}
+.mock-ai{margin-top:12px;background:var(--green);border-radius:14px;padding:13px 15px;display:flex;align-items:center;gap:10px;color:#EAF1EC}
+.mock-ai svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.8}
+.mock-ai b{font-size:13px;color:#fff}.mock-ai span{font-size:11.5px;color:#B9CcBe}
+.mock-float{position:absolute;background:var(--surface);border:1px solid var(--line);box-shadow:var(--sh-m);border-radius:14px;padding:11px 14px;display:flex;align-items:center;gap:10px;z-index:3}
+.mock-float.f1{right:-16px;top:30px}
+.mock-float .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--green),#2f8a64);display:grid;place-items:center;color:#fff;font-weight:800;font-size:13px}
+.mock-float b{font-size:12.5px;color:var(--ink)}.mock-float span{font-size:11px;color:var(--sub)}
+
+/* trust strip */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+.strip-in{display:flex;align-items:center;gap:30px;flex-wrap:wrap;justify-content:center;padding:20px 0}
+.strip span{font-size:13px;font-weight:600;color:var(--sub)}
+.strip b{color:var(--ink)}
+
+/* sections */
+section{padding:70px 0}
+.sec-head{max-width:38em}
+.sec-head h2{font-size:clamp(28px,3.8vw,44px);margin-top:14px}
+.sec-head p{margin-top:13px}
 
 /* AI match */
-.match{background:var(--green);color:#EAF1EC;border-radius:var(--r-xl);padding:clamp(28px,4vw,52px);box-shadow:var(--shadow-l);position:relative;overflow:hidden}
-.match:before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(200,162,74,.28),transparent 65%);right:-120px;top:-160px}
-.match .eyebrow{color:var(--gold)}
-.match h2{color:#fff;font-size:clamp(26px,3.6vw,40px);margin-top:12px;max-width:16em}
-.match p.sub{color:#C4D3C8;margin-top:12px;max-width:34em}
-.match-q{margin-top:30px;display:grid;gap:18px;position:relative;z-index:2}
-.q-row label{display:block;font-weight:700;font-size:13px;color:#AFC3B4;margin-bottom:10px;letter-spacing:.02em}
-.chips{display:flex;flex-wrap:wrap;gap:10px}
-.chip{padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.08);color:#E7EFE8;font-weight:600;font-size:14px;border:1.5px solid rgba(255,255,255,.14);transition:.18s}
-.chip:hover{background:rgba(255,255,255,.16)}
+.match{background:linear-gradient(160deg,#16412F,#1C5340);color:#E6EFE9;border-radius:var(--r-xl);padding:clamp(26px,3.6vw,48px);box-shadow:var(--sh-l);position:relative;overflow:hidden}
+.match:before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(200,162,74,.3),transparent 62%);right:-110px;top:-150px}
+.match .eyebrow{background:rgba(200,162,74,.18);color:var(--gold)}
+.match h2{color:#fff;font-size:clamp(24px,3.2vw,38px);margin-top:14px;max-width:17em}
+.match .sub{color:#B7C9BD;margin-top:12px;max-width:36em}
+.match-q{margin-top:28px;display:grid;gap:18px;position:relative;z-index:2}
+.q-row label{display:block;font-weight:700;font-size:12.5px;color:#9DB6A6;margin-bottom:9px}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{padding:9px 15px;border-radius:10px;background:rgba(255,255,255,.07);color:#E7EFE8;font-weight:600;font-size:13.5px;border:1px solid rgba(255,255,255,.13);transition:.16s}
+.chip:hover{background:rgba(255,255,255,.14)}
 .chip.on{background:var(--gold);color:#2A2010;border-color:var(--gold)}
-.match-go{margin-top:8px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.match-note{font-size:12.5px;color:#9DB4A3}
-#matchResult{margin-top:24px;display:none;gap:14px;grid-template-columns:1fr 1fr;position:relative;z-index:2}
-.mr-card{background:rgba(255,255,255,.95);border-radius:16px;padding:16px;display:flex;gap:13px;align-items:center;color:var(--ink)}
-.mr-card .thumb{width:60px;height:60px;border-radius:13px;object-fit:cover;flex:none}
-.mr-card .t{font-family:var(--ff-display);font-weight:600;font-size:15.5px;line-height:1.2}
-.mr-card .why{font-size:12px;color:var(--green-d);font-weight:600;margin-top:3px}
-.mr-card .meta{font-size:12px;color:var(--sub);margin-top:2px}
+.match-go{margin-top:6px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.match-note{font-size:12px;color:#94AC9C}
+#matchResult{margin-top:22px;display:none;gap:12px;grid-template-columns:1fr 1fr;position:relative;z-index:2}
+.mr-card{background:#fff;border-radius:14px;padding:14px;display:flex;gap:12px;align-items:center;color:var(--ink)}
+.mr-card img{width:54px;height:54px;border-radius:11px;object-fit:cover;flex:none}
+.mr-card .t{font-weight:700;font-size:14.5px;line-height:1.2}
+.mr-card .why{font-size:11.5px;color:var(--green);font-weight:700;margin-top:3px}
+.mr-card .m{font-size:11.5px;color:var(--sub);margin-top:2px}
 
-/* job board */
-.board-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between;margin-top:26px}
-.filters{display:flex;gap:9px;flex-wrap:wrap}
-.fchip{padding:9px 15px;border-radius:999px;background:var(--white);border:1.5px solid var(--line);color:var(--body);font-weight:600;font-size:13.5px;transition:.16s}
-.fchip:hover{border-color:var(--green)}
-.fchip.on{background:var(--green);color:#FBF7EE;border-color:var(--green)}
+/* boards */
+.board-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between;margin-top:24px}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.fchip{padding:9px 14px;border-radius:10px;background:var(--surface);border:1px solid var(--line2);color:var(--body);font-weight:600;font-size:13.5px;transition:.15s}
+.fchip:hover{border-color:var(--green);color:var(--ink)}
+.fchip.on{background:var(--green);color:#F4F8F5;border-color:var(--green)}
 .count{font-size:13.5px;color:var(--sub);font-weight:600}
-.grid{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.card{background:var(--white);border-radius:var(--r-l);overflow:hidden;box-shadow:var(--shadow-s);border:1px solid var(--line-soft);transition:transform .25s ease,box-shadow .25s ease;cursor:pointer;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-m)}
-.card.match-hit{outline:2.5px solid var(--gold);outline-offset:2px}
-.card-img{position:relative;aspect-ratio:1.4;background:var(--green-soft)}
-.card-img img{width:100%;height:100%;object-fit:cover}
-.card-save{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;background:rgba(20,28,22,.34);display:grid;place-items:center;backdrop-filter:blur(4px)}
-.card-save svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:1.9}
+.grid{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--surface);border-radius:var(--r-l);overflow:hidden;border:1px solid var(--line);box-shadow:var(--sh-s);transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,border-color .25s;cursor:pointer;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-5px);box-shadow:var(--sh-m);border-color:var(--line2)}
+.card.match-hit{outline:2px solid var(--gold);outline-offset:2px}
+.card-img{position:relative;aspect-ratio:1.65;overflow:hidden;background:var(--green-soft)}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.card:hover .card-img img{transform:scale(1.05)}
+.card-save{position:absolute;top:11px;right:11px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;box-shadow:var(--sh-s)}
+.card-save svg{width:17px;height:17px;stroke:var(--ink);fill:none;stroke-width:2}
 .card-save.on svg{fill:var(--gold);stroke:var(--gold)}
-.card-cad{position:absolute;left:12px;bottom:12px;background:rgba(255,255,255,.94);color:var(--ink);font-weight:700;font-size:12px;padding:6px 11px;border-radius:999px}
-.card-body{padding:17px 18px 19px;flex:1;display:flex;flex-direction:column}
-.card-cause{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:12px;color:var(--green);text-transform:uppercase;letter-spacing:.06em}
-.card-cause svg{width:14px;height:14px;stroke:var(--green)}
-.card h3{font-size:19px;margin-top:9px;line-height:1.18}
-.card .meta{font-size:13px;color:var(--sub);margin-top:8px}
-.card-foot{margin-top:auto;padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.tag-vet{font-size:11.5px;font-weight:700;color:var(--gold-d);background:var(--gold-soft);padding:5px 10px;border-radius:999px}
+.card-cad{position:absolute;left:11px;bottom:11px;background:rgba(255,255,255,.95);color:var(--ink);font-weight:700;font-size:11.5px;padding:5px 10px;border-radius:8px;box-shadow:var(--sh-s)}
+.card-body{padding:16px 17px 18px;flex:1;display:flex;flex-direction:column}
+.card-cause{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:11.5px;color:var(--green);text-transform:uppercase;letter-spacing:.04em}
+.card-cause svg{width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:1.9}
+.card h3{font-size:17.5px;margin-top:9px;line-height:1.22;letter-spacing:-.02em}
+.card .meta{font-size:13px;color:var(--sub);margin-top:7px}
+.card-foot{margin-top:auto;padding-top:13px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.tag-vet{font-size:11px;font-weight:700;color:var(--gold-ink);background:var(--gold-soft);padding:5px 9px;border-radius:8px}
 .spots{font-size:13px;font-weight:700;color:var(--green);margin-left:auto}
 
-/* relocation */
-.reloc{background:var(--green-d);color:#E9F0EB;border-radius:var(--r-xl);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
-.reloc-img{min-height:340px;background:var(--green-soft)}.reloc-img img{width:100%;height:100%;object-fit:cover}
-.reloc-txt{padding:clamp(28px,3.5vw,52px);display:flex;flex-direction:column;justify-content:center}
-.reloc-txt .eyebrow{color:var(--gold)}
-.reloc-txt h2{color:#fff;font-size:clamp(26px,3.4vw,40px);margin-top:12px}
-.reloc-txt p{color:#C4D3C8;margin-top:14px;max-width:30em}
-.reloc-list{margin-top:20px;display:grid;gap:12px}
-.reloc-list li{list-style:none;display:flex;gap:11px;align-items:flex-start;color:#DCE7DE;font-size:14.5px}
-.reloc-list svg{width:20px;height:20px;stroke:var(--gold);flex:none;margin-top:1px}
+/* people */
+.pgrid{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pcard{background:var(--surface);border-radius:var(--r-l);padding:20px;border:1px solid var(--line);box-shadow:var(--sh-s);cursor:pointer;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,border-color .25s;display:flex;flex-direction:column}
+.pcard:hover{transform:translateY(-5px);box-shadow:var(--sh-m);border-color:var(--line2)}
+.pcard-top{display:flex;gap:13px;align-items:center}
+.pavatar{width:54px;height:54px;border-radius:15px;flex:none;display:grid;place-items:center;font-weight:800;font-size:19px;color:#fff;background:linear-gradient(135deg,var(--green),#2f8a64)}
+.pavatar.g{background:linear-gradient(135deg,var(--gold-ink),var(--gold))}
+.pcard-top h3{font-size:17.5px;letter-spacing:-.02em}
+.pmeta{font-size:12.5px;color:var(--sub);font-weight:600}
+.pbio{font-size:13.5px;color:var(--body);margin-top:13px;line-height:1.55}
+.pneeds{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+.nchip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:var(--green-ink);background:var(--green-soft);padding:5px 10px;border-radius:8px}
+.nchip svg{width:12px;height:12px;stroke:var(--green);fill:none;stroke-width:2}
+.pcard-foot{margin-top:auto;padding-top:15px;display:flex;align-items:center;justify-content:space-between}
+.panjos{font-size:12px;color:var(--sub);font-weight:600}
+.plink{font-size:13px;font-weight:700;color:var(--green)}
+.pnote{margin-top:20px;font-size:12.5px;color:var(--sub);display:flex;gap:8px;align-items:center}
+.pnote svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:1.8}
 
 /* steps */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
-.step{background:var(--white);border-radius:var(--r-l);padding:28px;border:1px solid var(--line-soft);box-shadow:var(--shadow-s)}
-.step .n{width:46px;height:46px;border-radius:14px;background:var(--green-soft);display:grid;place-items:center;margin-bottom:18px}
-.step .n svg{width:23px;height:23px;stroke:var(--green)}
-.step h3{font-size:21px}.step p{margin-top:9px;font-size:14.5px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px}
+.step{background:var(--surface);border-radius:var(--r-l);padding:26px;border:1px solid var(--line);box-shadow:var(--sh-s)}
+.step .n{width:44px;height:44px;border-radius:13px;background:var(--green-soft);display:grid;place-items:center;margin-bottom:16px}
+.step .n svg{width:22px;height:22px;stroke:var(--green);fill:none;stroke-width:1.8}
+.step h3{font-size:18px;letter-spacing:-.02em}.step p{margin-top:8px;font-size:14px}
 
-/* trust / impact */
-.trust{background:var(--paper);border-radius:var(--r-xl);padding:clamp(30px,4vw,56px);border:1px solid var(--line-soft)}
+/* relocation */
+.reloc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-xl);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:var(--sh-s)}
+.reloc-img{min-height:330px;overflow:hidden}.reloc-img img{width:100%;height:100%;object-fit:cover}
+.reloc-txt{padding:clamp(26px,3vw,48px);display:flex;flex-direction:column;justify-content:center}
+.reloc-txt h2{font-size:clamp(24px,3vw,38px);margin-top:14px}
+.reloc-txt p{margin-top:14px;max-width:30em}
+.reloc-list{margin-top:18px;display:grid;gap:11px}
+.reloc-list li{list-style:none;display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--body)}
+.reloc-list svg{width:19px;height:19px;stroke:var(--green);fill:none;stroke-width:2;flex:none;margin-top:1px}
+
+/* stats */
+.trust-sec{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-xl);padding:clamp(28px,3.6vw,52px);box-shadow:var(--sh-s)}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
-.stat b{display:block;font-family:var(--ff-display);font-size:clamp(34px,5vw,52px);color:var(--green);font-weight:600;letter-spacing:-.02em}
-.stat span{font-size:13.5px;color:var(--sub);font-weight:600}
-.vet-note{margin-top:34px;display:flex;gap:14px;align-items:flex-start;background:var(--gold-soft);padding:18px 20px;border-radius:var(--r);max-width:46em}
-.vet-note svg{width:24px;height:24px;stroke:var(--gold-d);flex:none}
-.vet-note p{font-size:14px;color:#6b531a}
+.stat b{display:block;font-size:clamp(32px,4.6vw,48px);color:var(--green);font-weight:800;letter-spacing:-.04em}
+.stat span{font-size:13px;color:var(--sub);font-weight:600;margin-top:4px;display:block}
+.vet-note{margin-top:30px;display:flex;gap:13px;align-items:flex-start;background:var(--gold-soft);padding:17px 19px;border-radius:var(--r);max-width:48em}
+.vet-note svg{width:23px;height:23px;stroke:var(--gold-ink);fill:none;stroke-width:1.8;flex:none}
+.vet-note p{font-size:13.5px;color:#6b531a}
 
-/* CTA */
-.cta-final{text-align:center;padding:80px 0}
-.cta-final h2{font-size:clamp(32px,5vw,58px)}
-.cta-final p{margin:18px auto 30px;max-width:32em}
+/* final cta */
+.cta-final{text-align:center;padding:84px 0}
+.cta-final h2{font-size:clamp(30px,4.6vw,54px)}
+.cta-final p{margin:16px auto 28px;max-width:30em}
 
 /* footer */
-footer{background:var(--green-d);color:#BCD0C0;padding:56px 0 30px;margin-top:30px}
-.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:34px}
-footer h4{color:#fff;font-family:var(--ff-ui);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
-footer a{display:block;font-size:14px;color:#BCD0C0;padding:5px 0}footer a:hover{color:#fff}
-.foot-brand{font-family:var(--ff-display);color:#fff;font-size:22px;font-weight:600;margin-bottom:12px}
-.foot-bot{border-top:1px solid rgba(255,255,255,.12);margin-top:38px;padding-top:22px;font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.reveal{opacity:0;transform:translateY(26px)}
-
-@media(max-width:920px){
-  .hero-grid{grid-template-columns:1fr;gap:30px}.hero-art{height:360px;order:-1}
-  #matchResult{grid-template-columns:1fr}
-  .grid{grid-template-columns:repeat(2,1fr)}
-  .reloc{grid-template-columns:1fr}.reloc-img{min-height:240px}
-  .steps{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr);gap:28px}
-  .foot-grid{grid-template-columns:1fr 1fr}
-  .nav-links{display:none}.nav-burger{display:grid}
-}
-@media(max-width:560px){
-  .grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}
-  .hero-cta .btn{flex:1;justify-content:center}
-  .foot-grid{grid-template-columns:1fr}
-}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
-
-/* CAA logo */
-.brand .logo{height:42px;width:auto;display:block}
-.foot-logo{height:64px;width:auto;margin-bottom:14px;filter:brightness(0) invert(1)}
-
-/* people board */
-.pgrid{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.pcard{background:var(--white);border-radius:var(--r-l);padding:22px;border:1px solid var(--line-soft);box-shadow:var(--shadow-s);cursor:pointer;transition:transform .25s ease,box-shadow .25s ease;display:flex;flex-direction:column}
-.pcard:hover{transform:translateY(-5px);box-shadow:var(--shadow-m)}
-.pcard-top{display:flex;gap:14px;align-items:center}
-.pavatar{width:58px;height:58px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:var(--ff-display);font-weight:600;font-size:21px;color:#fff;background:linear-gradient(135deg,var(--green),#2f7a5e)}
-.pavatar.g{background:linear-gradient(135deg,var(--gold-d),var(--gold))}
-.pcard-top h3{font-size:19px}
-.pmeta{font-size:13px;color:var(--sub);font-weight:600}
-.pbio{font-size:14px;color:var(--body);margin-top:14px;line-height:1.55}
-.pneeds{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
-.nchip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--green-d);background:var(--green-soft);padding:6px 11px;border-radius:999px}
-.nchip svg{width:13px;height:13px;stroke:var(--green);fill:none;stroke-width:1.9}
-.pcard-foot{margin-top:auto;padding-top:16px;display:flex;align-items:center;justify-content:space-between}
-.panjos{font-size:12.5px;color:var(--sub);font-weight:600}
-.plink{font-size:13px;font-weight:700;color:var(--green)}
-.pnote{margin-top:22px;font-size:12.5px;color:var(--sub);display:flex;gap:8px;align-items:center}
-.pnote svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:1.8}
+footer{background:var(--ink);color:#9CA89C;padding:54px 0 28px;margin-top:24px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+footer h4{color:#fff;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:13px}
+footer a{display:block;font-size:14px;color:#9CA89C;padding:5px 0}footer a:hover{color:#fff}
+.foot-brand{color:#fff;font-size:19px;font-weight:800;margin-bottom:10px;letter-spacing:-.02em}
+.foot-logo{height:54px;margin-bottom:12px;filter:brightness(0) invert(1);opacity:.95}
+.foot-bot{border-top:1px solid rgba(255,255,255,.1);margin-top:36px;padding-top:20px;font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
 /* modal */
 .modal{position:fixed;inset:0;z-index:100;display:none;align-items:flex-end;justify-content:center}
 .modal.open{display:flex}
-.modal-bg{position:absolute;inset:0;background:rgba(18,28,22,.5);backdrop-filter:blur(3px)}
-.modal-card{position:relative;background:var(--cream);width:100%;max-width:560px;max-height:90vh;overflow:auto;border-radius:26px 26px 0 0;padding:28px;box-shadow:var(--shadow-l)}
-@media(min-width:600px){.modal{align-items:center}.modal-card{border-radius:26px}}
-.modal-x{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;background:var(--inset,#EFE9DC);display:grid;place-items:center;font-size:18px;color:var(--ink)}
-.modal-head{display:flex;gap:15px;align-items:center}
-.modal-head h3{font-size:25px}
-.modal-bio{margin-top:16px;font-size:15px;line-height:1.6}
-.need-row{display:flex;gap:13px;align-items:center;background:var(--white);border:1px solid var(--line-soft);border-radius:16px;padding:15px;margin-top:12px}
-.need-ic{width:42px;height:42px;border-radius:12px;background:var(--green-soft);display:grid;place-items:center;flex:none}
-.need-ic svg{width:21px;height:21px;stroke:var(--green);fill:none;stroke-width:1.8}
-.need-row .nt{font-family:var(--ff-ui);font-weight:700;color:var(--ink);font-size:14.5px}
-.need-row .nc{font-size:12.5px;color:var(--sub)}
-.need-row .btn{margin-left:auto;padding:10px 15px;font-size:13px}
+.modal-bg{position:absolute;inset:0;background:rgba(17,21,16,.5);backdrop-filter:blur(3px)}
+.modal-card{position:relative;background:var(--bg);width:100%;max-width:540px;max-height:90vh;overflow:auto;border-radius:24px 24px 0 0;padding:26px;box-shadow:var(--sh-l)}
+@media(min-width:600px){.modal{align-items:center}.modal-card{border-radius:24px}}
+.modal-x{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:var(--bg2);display:grid;place-items:center;font-size:17px;color:var(--ink)}
+.modal-head{display:flex;gap:14px;align-items:center}
+.modal-head h3{font-size:23px;letter-spacing:-.02em}
+.modal-bio{margin-top:15px;font-size:14.5px;line-height:1.6}
+.need-row{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:11px}
+.need-ic{width:40px;height:40px;border-radius:11px;background:var(--green-soft);display:grid;place-items:center;flex:none}
+.need-ic svg{width:20px;height:20px;stroke:var(--green);fill:none;stroke-width:1.8}
+.need-row .nt{font-weight:700;color:var(--ink);font-size:14px}.need-row .nc{font-size:12px;color:var(--sub)}
+.need-row .btn{margin-left:auto;padding:9px 14px;font-size:13px}
 
-/* --- polish pass --- */
+.reveal{opacity:0;transform:translateY(22px)}
 :focus-visible{outline:2.5px solid var(--gold);outline-offset:3px;border-radius:8px}
-.nav{transition:box-shadow .3s ease,background .3s ease}
-.nav.scrolled{box-shadow:0 8px 30px rgba(28,40,28,.09);background:rgba(247,243,236,.95)}
-.btn-primary:hover,.btn-gold:hover{transform:translateY(-2px)}
-.card-img img{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
-.card:hover .card-img img{transform:scale(1.06)}
-.hero-art .ph,.hero-badge{will-change:transform}
-.nav-burger{width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line);color:var(--ink);background:var(--white);place-items:center}
-.nav-burger svg{width:22px;height:22px}
-.mobile-menu{display:none;flex-direction:column;background:var(--paper);border-bottom:1px solid var(--line)}
-.mobile-menu.open{display:flex}
-.mobile-menu a{padding:15px 24px;font-weight:600;color:var(--body);border-top:1px solid var(--line-soft)}
-.mobile-menu a:active{background:var(--white)}
-@media(min-width:921px){.mobile-menu{display:none!important}}
+
+@media(max-width:940px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}.mock-panel{transform:none}.mock-float.f1{right:0}
+  .grid,.pgrid{grid-template-columns:repeat(2,1fr)}
+  #matchResult{grid-template-columns:1fr}
+  .reloc{grid-template-columns:1fr}.reloc-img{min-height:230px}
+  .steps{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr);gap:26px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}.nav-burger{display:grid}
+}
+@media(max-width:560px){.grid,.pgrid{grid-template-columns:1fr}.hero-cta .btn{flex:1}.foot-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav"><div class="wrap nav-in">
   <a class="brand" href="#top">
     <img class="logo" src="assets/caa-logo.png" alt="Community Angels Association" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-    <span class="wing" style="display:none"><svg viewBox="0 0 24 24" fill="none"><path d="M4 14c4-1 6-4 8-9 2 5 4 8 8 9-4 1-6 3-8 6-2-3-4-5-8-6Z" stroke-width="1.6"/></svg></span>
+    <span class="wing" style="display:none"><svg viewBox="0 0 24 24" fill="none"><path d="M4 14c4-1 6-4 8-9 2 5 4 8 8 9-4 1-6 3-8 6-2-3-4-5-8-6Z"/></svg></span>
     Angels Network
   </a>
   <div class="nav-links">
-    <a href="#pessoas">As pessoas</a>
-    <a href="#board">Oportunidades</a>
-    <a href="#match">Match inteligente</a>
-    <a href="#reloc">Mudar-se</a>
-    <a href="#how">Como funciona</a>
+    <a href="#pessoas">As pessoas</a><a href="#board">Oportunidades</a><a href="#match">Match</a><a href="#reloc">Mudar-se</a><a href="#how">Como funciona</a>
   </div>
   <div class="nav-cta">
     <a href="#match" class="btn btn-primary">Quero ajudar</a>
-    <button class="nav-burger" id="burger" aria-label="Abrir menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <button class="nav-burger" id="burger" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
   </div>
 </div>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#pessoas">As pessoas</a><a href="#board">Oportunidades</a><a href="#match">Match inteligente</a><a href="#reloc">Mudar-se</a><a href="#how">Como funciona</a>
-</div></nav>
+<div class="mobile-menu" id="mobileMenu"><a href="#pessoas">As pessoas</a><a href="#board">Oportunidades</a><a href="#match">Match</a><a href="#reloc">Mudar-se</a><a href="#how">Como funciona</a></div>
+</nav>
 
 <a id="top"></a>
-<!-- HERO -->
-<header class="hero"><div class="wrap hero-grid">
-  <div>
-    <p class="eyebrow reveal">Voluntariado · Baixo Alentejo &amp; Algarve</p>
-    <h1 class="reveal">Dê uma tarde.<br><em>Mude uma vida.</em></h1>
-    <p class="lead reveal">No sul de Portugal, milhares de pessoas idosas passam os dias sozinhas. Junte-se à rede de Anjos que lhes faz companhia — escolha uma oportunidade ou deixe o nosso match inteligente encontrar a pessoa certa para si.</p>
-    <div class="hero-cta reveal">
-      <a href="#board" class="btn btn-primary"><svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h12"/></svg>Ver oportunidades</a>
-      <a href="#match" class="btn btn-gold"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2L12 3Z"/></svg>Encontrar o meu match</a>
+<header class="hero">
+  <div class="hero-bg"><div class="blob b1"></div><div class="blob b2"></div></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow reveal">Baixo Alentejo &amp; Algarve</span>
+      <h1 class="reveal" style="margin-top:18px">Encontre quem precisa de si.<br><span class="hl">Em minutos.</span></h1>
+      <p class="lead reveal">A plataforma que liga voluntários a pessoas idosas que vivem sós, no sul de Portugal. Explore o quadro, conheça as pessoas, ou deixe o match inteligente encontrar a ligação certa.</p>
+      <div class="hero-cta reveal">
+        <a href="#match" class="btn btn-primary"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2L12 3Z"/></svg>Encontrar o meu match</a>
+        <a href="#board" class="btn btn-ghost">Ver oportunidades</a>
+      </div>
+      <div class="hero-trust reveal">
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5"/></svg>Gratuito</span>
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5"/></svg>Voluntários verificados</span>
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5"/></svg>1h por semana já chega</span>
+      </div>
     </div>
-    <div class="hero-meta reveal">
-      <div class="m"><b>6 000+</b><span>idosos sós sinalizados na região</span></div>
-      <div class="m"><b>13</b><span>concelhos do Baixo Alentejo</span></div>
-      <div class="m"><b>1h</b><span>por semana já faz a diferença</span></div>
+    <div class="reveal mock" id="mock">
+      <div class="mock-panel">
+        <div class="mock-head"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-search">Procurar perto de si…</span></div>
+        <div class="mock-card"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=160&q=70" alt=""><div><div class="t">Tardes de conversa · Beja</div><div class="m">Terças · 15h00</div></div><span class="pill">Companhia</span></div>
+        <div class="mock-card"><img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=160&q=70" alt=""><div><div class="t">Boleia ao médico · Serpa</div><div class="m">Quinta · 9h30</div></div><span class="pill">Boleia</span></div>
+        <div class="mock-ai"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2L12 3Z"/></svg><div><b>Match inteligente</b><br><span>3 ligações perfeitas para si</span></div></div>
+      </div>
+      <div class="mock-float f1"><span class="av">A</span><div><b>Dona Amélia, 82</b><br><span>quer companhia · Beja</span></div></div>
     </div>
   </div>
-  <div class="hero-art reveal">
-    <div class="ph p1"><img loading="eager" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=72" alt="Campos dourados do Alentejo"></div>
-    <div class="ph p2"><img loading="lazy" src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=600&q=72" alt="Café e companhia"></div>
-    <div class="ph p3"><img loading="lazy" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=72" alt="Mãos dadas"></div>
-    <div class="hero-badge"><span class="dot"></span><div><b>Sofia juntou-se hoje</b><br><span>Voluntária em Beja</span></div></div>
-  </div>
-</div></header>
+</header>
+
+<div class="strip"><div class="wrap strip-in">
+  <span>Em parceria com</span><span><b>Rede Social de Beja</b></span><span><b>Misericórdias</b></span><span><b>GNR · Idosos em Segurança</b></span><span><b>Cruz Vermelha</b></span>
+</div></div>
 
 <!-- AI MATCH -->
-<section id="match"><div class="wrap">
-  <div class="match reveal">
-    <p class="eyebrow">Match inteligente</p>
-    <h2>Diga-nos como gostaria de ajudar. Encontramos quem precisa de si.</h2>
-    <p class="sub">Em vez de procurar às cegas, responda a três perguntas e a nossa pesquisa cruza zona, disponibilidade e o que gosta de fazer com quem precisa de companhia perto de si.</p>
-    <div class="match-q">
-      <div class="q-row"><label>1 · Onde está?</label><div class="chips" data-q="zona">
-        <button class="chip" data-v="alentejo">Baixo Alentejo</button>
-        <button class="chip" data-v="algarve">Algarve</button>
-        <button class="chip" data-v="remoto">À distância</button>
-        <button class="chip" data-v="any">Indiferente</button>
-      </div></div>
-      <div class="q-row"><label>2 · Quando tem tempo?</label><div class="chips" data-q="quando">
-        <button class="chip" data-v="manha">Manhãs</button>
-        <button class="chip" data-v="tarde">Tardes</button>
-        <button class="chip" data-v="fds">Fins de semana</button>
-        <button class="chip" data-v="flex">Flexível</button>
-      </div></div>
-      <div class="q-row"><label>3 · O que gosta de fazer?</label><div class="chips" data-q="gosto">
-        <button class="chip" data-v="companhia">Conversar &amp; ouvir</button>
-        <button class="chip" data-v="boleia">Conduzir &amp; acompanhar</button>
-        <button class="chip" data-v="evento">Animar convívios</button>
-        <button class="chip" data-v="apoio">Ajudar nas tarefas</button>
-        <button class="chip" data-v="admin">Bastidores</button>
-      </div></div>
-    </div>
-    <div class="match-go">
-      <button class="btn btn-gold" onclick="runMatch()"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2L12 3Z"/></svg>Encontrar o meu match</button>
-      <span class="match-note">Pesquisa inteligente · em breve com IA conversacional</span>
-    </div>
-    <div id="matchResult"></div>
+<section id="match"><div class="wrap"><div class="match reveal">
+  <span class="eyebrow gold">Match inteligente</span>
+  <h2>Diga-nos como gostaria de ajudar. Encontramos quem precisa de si.</h2>
+  <p class="sub">Responda a três perguntas e cruzamos zona, disponibilidade e o que gosta de fazer com quem precisa de companhia perto de si.</p>
+  <div class="match-q">
+    <div class="q-row"><label>1 · Onde está?</label><div class="chips" data-q="zona"><button class="chip" data-v="alentejo">Baixo Alentejo</button><button class="chip" data-v="algarve">Algarve</button><button class="chip" data-v="remoto">À distância</button><button class="chip" data-v="any">Indiferente</button></div></div>
+    <div class="q-row"><label>2 · Quando tem tempo?</label><div class="chips" data-q="quando"><button class="chip" data-v="manha">Manhãs</button><button class="chip" data-v="tarde">Tardes</button><button class="chip" data-v="fds">Fins de semana</button><button class="chip" data-v="flex">Flexível</button></div></div>
+    <div class="q-row"><label>3 · O que gosta de fazer?</label><div class="chips" data-q="gosto"><button class="chip" data-v="companhia">Conversar</button><button class="chip" data-v="boleia">Conduzir</button><button class="chip" data-v="evento">Animar convívios</button><button class="chip" data-v="apoio">Ajudar nas tarefas</button><button class="chip" data-v="admin">Bastidores</button></div></div>
   </div>
-</div></section>
+  <div class="match-go"><button class="btn btn-gold" onclick="runMatch()"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2L12 3Z"/></svg>Encontrar o meu match</button><span class="match-note">Pesquisa inteligente · em breve com IA conversacional</span></div>
+  <div id="matchResult"></div>
+</div></div></section>
 
-<!-- PEOPLE BOARD -->
+<!-- PEOPLE -->
 <section id="pessoas"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">As pessoas</p><h2>Conheça quem espera por si</h2><p class="lead">Não são tarefas — são pessoas. Veja quem vive só perto de si, conheça as suas necessidades, e escolha como quer ajudar.</p></div>
-  <div class="board-bar reveal">
-    <div class="filters" id="pfilters">
-      <button class="fchip on" data-pf="all">Tudo</button>
-      <button class="fchip" data-pf="alentejo">Alentejo</button>
-      <button class="fchip" data-pf="algarve">Algarve</button>
-      <button class="fchip" data-pf="companhia">Querem companhia</button>
-      <button class="fchip" data-pf="boleia">Precisam de boleia</button>
-    </div>
-  </div>
+  <div class="sec-head reveal"><span class="eyebrow">As pessoas</span><h2>Conheça quem espera por si</h2><p class="lead">Não são tarefas — são pessoas. Veja quem vive só, conheça as suas necessidades, e escolha como quer ajudar.</p></div>
+  <div class="board-bar reveal"><div class="filters" id="pfilters"><button class="fchip on" data-pf="all">Tudo</button><button class="fchip" data-pf="alentejo">Alentejo</button><button class="fchip" data-pf="algarve">Algarve</button><button class="fchip" data-pf="companhia">Querem companhia</button><button class="fchip" data-pf="boleia">Precisam de boleia</button></div></div>
   <div class="pgrid" id="pgrid"></div>
   <div class="pnote reveal"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>Perfis partilhados com consentimento e protegidos — os dados completos só ficam visíveis após a sua verificação.</div>
 </div></section>
 
-<!-- JOB BOARD -->
-<section id="board"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow" style="color:var(--gold-d)">Ou por tarefa</p></div>
-  <div class="sec-head reveal"><p class="eyebrow">O quadro</p><h2>Oportunidades perto de si</h2><p class="lead">Cada cartão é uma tarde na vida de alguém. Escolha por causa, zona ou disponibilidade.</p></div>
-  <div class="board-bar reveal">
-    <div class="filters" id="filters">
-      <button class="fchip on" data-f="all">Tudo</button>
-      <button class="fchip" data-f="companhia">Companhia</button>
-      <button class="fchip" data-f="evento">Convívio</button>
-      <button class="fchip" data-f="boleia">Boleia</button>
-      <button class="fchip" data-f="apoio">Apoio</button>
-      <button class="fchip" data-f="admin">Bastidores</button>
-      <button class="fchip" data-f="alentejo">Alentejo</button>
-      <button class="fchip" data-f="algarve">Algarve</button>
-      <button class="fchip" data-f="remoto">À distância</button>
-    </div>
-    <span class="count" id="count"></span>
-  </div>
+<!-- BOARD -->
+<section id="board" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
+  <div class="sec-head reveal"><span class="eyebrow gold">Ou por tarefa</span><h2>O quadro de oportunidades</h2><p class="lead">Cada cartão é uma tarde na vida de alguém. Filtre por causa, zona ou disponibilidade.</p></div>
+  <div class="board-bar reveal"><div class="filters" id="filters"><button class="fchip on" data-f="all">Tudo</button><button class="fchip" data-f="companhia">Companhia</button><button class="fchip" data-f="evento">Convívio</button><button class="fchip" data-f="boleia">Boleia</button><button class="fchip" data-f="apoio">Apoio</button><button class="fchip" data-f="admin">Bastidores</button><button class="fchip" data-f="alentejo">Alentejo</button><button class="fchip" data-f="algarve">Algarve</button><button class="fchip" data-f="remoto">À distância</button></div><span class="count" id="count"></span></div>
   <div class="grid" id="grid"></div>
-</div></section>
-
-<!-- RELOCATION -->
-<section id="reloc"><div class="wrap">
-  <div class="reloc reveal">
-    <div class="reloc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=72" alt="Paisagem do sul de Portugal"></div>
-    <div class="reloc-txt">
-      <p class="eyebrow">Venha viver e ajudar</p>
-      <h2>Mude-se para o sul. Faça parte.</h2>
-      <p>Não é só para quem já cá vive. Recebemos voluntários de todo o lado que querem passar uma temporada no Alentejo ou no Algarve — a dar companhia e a viver o ritmo do sul.</p>
-      <ul class="reloc-list">
-        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5"/></svg>Apoio a encontrar alojamento na região</li>
-        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5"/></svg>Integração numa comunidade acolhedora</li>
-        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5"/></svg>Formação e um Angel experiente nas primeiras visitas</li>
-      </ul>
-      <div style="margin-top:26px"><a href="#match" class="btn btn-gold">Quero mudar-me para ajudar</a></div>
-    </div>
-  </div>
 </div></section>
 
 <!-- HOW -->
 <section id="how"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">Simples</p><h2>Como funciona</h2></div>
+  <div class="sec-head reveal"><span class="eyebrow">Simples</span><h2>Como funciona</h2></div>
   <div class="steps">
-    <div class="step reveal"><div class="n"><svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h12"/></svg></div><h3>1 · Escolha</h3><p>Encontre uma oportunidade no quadro, ou deixe o match inteligente sugerir a pessoa certa para si.</p></div>
-    <div class="step reveal"><div class="n"><svg viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg></div><h3>2 · Conheça</h3><p>Falamos consigo, fazemos uma verificação simples e apresentamo-lo à pessoa — só avança com o seu sim.</p></div>
-    <div class="step reveal"><div class="n"><svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>3 · Apareça</h3><p>Vai à hora combinada, faz companhia, e regista a visita. Uma hora por semana muda tudo.</p></div>
+    <div class="step reveal"><div class="n"><svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h12"/></svg></div><h3>1 · Escolha</h3><p>Encontre uma oportunidade ou pessoa no quadro, ou deixe o match sugerir a ligação certa.</p></div>
+    <div class="step reveal"><div class="n"><svg viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/></svg></div><h3>2 · Conheça</h3><p>Falamos consigo, fazemos uma verificação simples e apresentamo-lo à pessoa — só avança com o seu sim.</p></div>
+    <div class="step reveal"><div class="n"><svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>3 · Apareça</h3><p>Vai à hora combinada, faz companhia e regista a visita. Uma hora por semana muda tudo.</p></div>
   </div>
 </div></section>
 
-<!-- TRUST -->
-<section><div class="wrap">
-  <div class="trust reveal">
-    <div class="sec-head" style="margin-bottom:30px"><p class="eyebrow">Confiança</p><h2>Uma rede em que pode confiar</h2></div>
-    <div class="stats">
-      <div class="stat"><b>247</b><span>idosos acompanhados</span></div>
-      <div class="stat"><b>180</b><span>Anjos voluntários</span></div>
-      <div class="stat"><b>4 200</b><span>horas de companhia</span></div>
-      <div class="stat"><b>−34%</b><span>na solidão sentida</span></div>
-    </div>
-    <div class="vet-note">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
-      <p>Todos os Anjos passam por uma verificação simples — registo criminal e referências — antes das funções com pessoas idosas. É o que protege quem ajudamos, e a si.</p>
-    </div>
+<!-- RELOC -->
+<section id="reloc"><div class="wrap"><div class="reloc reveal">
+  <div class="reloc-img"><img loading="lazy" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=72" alt="Sul de Portugal"></div>
+  <div class="reloc-txt"><span class="eyebrow">Venha viver e ajudar</span><h2>Mude-se para o sul. Faça parte.</h2><p>Recebemos voluntários de todo o lado que querem passar uma temporada no Alentejo ou no Algarve — a dar companhia e a viver o ritmo do sul.</p>
+    <ul class="reloc-list">
+      <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5"/></svg>Apoio a encontrar alojamento na região</li>
+      <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5"/></svg>Integração numa comunidade acolhedora</li>
+      <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5"/></svg>Formação e um Angel experiente nas primeiras visitas</li>
+    </ul>
+    <div style="margin-top:24px"><a href="#match" class="btn btn-primary">Quero mudar-me para ajudar</a></div>
   </div>
-</div></section>
+</div></div></section>
 
-<!-- FINAL CTA -->
-<section class="cta-final"><div class="wrap reveal">
-  <p class="eyebrow">Junte-se a nós</p>
-  <h2>Há uma tarde sua à espera<br>de mudar uma vida.</h2>
-  <p class="lead">Comece hoje. A primeira vez é só uma conversa, sem compromisso.</p>
-  <a href="#match" class="btn btn-primary" style="font-size:16px;padding:16px 30px">Tornar-me um Angel</a>
-</div></section>
+<!-- STATS -->
+<section><div class="wrap"><div class="trust-sec reveal">
+  <div class="sec-head" style="margin-bottom:28px"><span class="eyebrow">Confiança</span><h2>Uma rede em que pode confiar</h2></div>
+  <div class="stats">
+    <div class="stat"><b>247</b><span>idosos acompanhados</span></div>
+    <div class="stat"><b>180</b><span>Anjos voluntários</span></div>
+    <div class="stat"><b>4 200</b><span>horas de companhia</span></div>
+    <div class="stat"><b>−34%</b><span>na solidão sentida</span></div>
+  </div>
+  <div class="vet-note"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg><p>Todos os Anjos passam por uma verificação simples — registo criminal e referências — antes das funções com pessoas idosas. É o que protege quem ajudamos, e a si.</p></div>
+</div></div></section>
 
-<!-- FOOTER -->
+<section class="cta-final"><div class="wrap reveal"><span class="eyebrow">Junte-se a nós</span><h2 style="margin-top:14px">Há uma tarde sua à espera<br>de mudar uma vida.</h2><p class="lead">Comece hoje. A primeira vez é só uma conversa, sem compromisso.</p><a href="#match" class="btn btn-primary" style="padding:15px 28px;font-size:16px">Tornar-me um Angel</a></div></section>
+
 <footer><div class="wrap">
   <div class="foot-grid">
-    <div>
-      <img class="foot-logo" src="assets/caa-logo.png" alt="Community Angels Association" onerror="this.style.display='none'">
-      <div class="foot-brand">Angels Network</div>
-      <p style="font-size:14px;max-width:24em">Companhia para quem vive só, no Baixo Alentejo e no Algarve. Uma associação comunitária sem fins lucrativos.</p>
-    </div>
-    <div><h4>Plataforma</h4><a href="#board">Oportunidades</a><a href="#match">Match inteligente</a><a href="#reloc">Mudar-se para ajudar</a><a href="#how">Como funciona</a></div>
-    <div><h4>Regiões</h4><a href="#board">Beja · Serpa · Moura</a><a href="#board">Castro Verde · Mértola</a><a href="#board">Faro · Tavira · Lagos</a><a href="#board">À distância</a></div>
-    <div><h4>Também no telemóvel</h4><a href="https://angel-team7.github.io/angels-network/">App para voluntários ↗</a><a href="#match">Falar connosco</a><a href="#">WhatsApp 935 856 033</a></div>
+    <div><img class="foot-logo" src="assets/caa-logo.png" alt="CAA" onerror="this.style.display='none'"><div class="foot-brand">Angels Network</div><p style="font-size:14px;max-width:24em">Companhia para quem vive só, no Baixo Alentejo e no Algarve. Uma associação comunitária sem fins lucrativos.</p></div>
+    <div><h4>Plataforma</h4><a href="#pessoas">As pessoas</a><a href="#board">Oportunidades</a><a href="#match">Match inteligente</a><a href="#reloc">Mudar-se</a></div>
+    <div><h4>Regiões</h4><a href="#board">Beja · Serpa · Moura</a><a href="#board">Castro Verde · Mértola</a><a href="#board">Faro · Tavira · Lagos</a></div>
+    <div><h4>Também no telemóvel</h4><a href="https://angel-team7.github.io/angels-network/">App para voluntários ↗</a><a href="#">WhatsApp 935 856 033</a></div>
   </div>
-  <div class="foot-bot"><span>© 2026 Community Angels Association · Baixo Alentejo &amp; Algarve, Portugal</span><span>Feito com cuidado 🪽</span></div>
+  <div class="foot-bot"><span>© 2026 Community Angels Association · Alentejo &amp; Algarve</span><span>Feito com cuidado 🪽</span></div>
 </div></footer>
 
-<!-- SENIOR MODAL -->
-<div class="modal" id="seniorModal" role="dialog" aria-modal="true" aria-label="Necessidades">
-  <div class="modal-bg" onclick="closeSenior()"></div>
-  <div class="modal-card" id="seniorBody"></div>
-</div>
+<div class="modal" id="seniorModal" role="dialog" aria-modal="true"><div class="modal-bg" onclick="closeSenior()"></div><div class="modal-card" id="seniorBody"></div></div>
 
 <script>
 const OPP=[
  {id:1,t:"Tardes de conversa com a Dona Amélia",cause:"companhia",region:"alentejo",town:"Beja",when:"Terças · 15h00",cad:"Toda a semana",time:["tarde","flex"],vet:true,spots:1,img:"1465495976277-4387d4b0b4c6"},
  {id:2,t:"Acompanhar o Sr. Joaquim à consulta",cause:"boleia",region:"alentejo",town:"Serpa",when:"Quinta · 9h30",cad:"Uma manhã",time:["manha"],vet:true,spots:1,img:"1447752875215-b2761acb3c5d"},
- {id:3,t:"Lanche-convívio de fim de tarde",cause:"evento",region:"alentejo",town:"Moura",when:"Sábado · 16h00",cad:"De 15 em 15 dias",time:["fds","tarde"],vet:false,spots:3,img:"1500382017468-9049fed747ef"},
+ {id:3,t:"Lanche-convívio de fim de tarde",cause:"evento",region:"alentejo",town:"Moura",when:"Sábado · 16h00",cad:"Quinzenal",time:["fds","tarde"],vet:false,spots:3,img:"1500382017468-9049fed747ef"},
  {id:4,t:"Companhia no mercado semanal",cause:"apoio",region:"alentejo",town:"Castro Verde",when:"Sextas · 10h00",cad:"Toda a semana",time:["manha"],vet:true,spots:1,img:"1454165804606-c3d57bc86b40"},
  {id:5,t:"Chamadas de boa-disposição",cause:"companhia",region:"remoto",town:"À distância",when:"Flexível",cad:"Toda a semana",time:["flex","tarde","manha","fds"],vet:false,spots:5,img:"1518495973542-4542c06a5843"},
  {id:6,t:"Mãos amigas nos bastidores",cause:"admin",region:"remoto",town:"Beja / remoto",when:"Flexível",cad:"Ao seu ritmo",time:["flex"],vet:false,spots:3,img:"1447710441604-5bdc41bc6517"},
  {id:7,t:"Passeios à beira-rio com a Dona Iva",cause:"companhia",region:"algarve",town:"Tavira",when:"Quartas · 17h00",cad:"Toda a semana",time:["tarde","fds"],vet:true,spots:1,img:"1469474968028-56623f02e42e"},
- {id:8,t:"Boleia ao mercado de Loulé",cause:"boleia",region:"algarve",town:"Faro",when:"Sábado · 9h00",cad:"De 15 em 15 dias",time:["fds","manha"],vet:true,spots:2,img:"1490730141103-6cac27aaab94"},
+ {id:8,t:"Boleia ao mercado de Loulé",cause:"boleia",region:"algarve",town:"Faro",when:"Sábado · 9h00",cad:"Quinzenal",time:["fds","manha"],vet:true,spots:2,img:"1490730141103-6cac27aaab94"},
  {id:9,t:"Café e jogos no centro de dia",cause:"evento",region:"algarve",town:"Lagos",when:"Terças · 15h30",cad:"Toda a semana",time:["tarde"],vet:false,spots:4,img:"1444930694458-01babf71870c"},
 ];
-const CAUSE={companhia:"Companhia",boleia:"Boleia",evento:"Convívio",apoio:"Apoio",admin:"Bastidores"};
-const CICON={companhia:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/>',boleia:'<path d="M5 17h14M6 17l1-5h10l1 5M7 12V8h10v4M7 17v2M17 17v2"/>',evento:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM23 21v-2a4 4 0 0 0-3-3.87"/>',apoio:'<path d="M20.8 8.6a5 5 0 0 0-7.1 0L12 10.3l-1.7-1.7a5 5 0 0 0-7.1 7.1L12 24l8.8-8.3a5 5 0 0 0 0-7.1Z"/>',admin:'<path d="M3 7h18M3 12h18M3 17h12"/>'};
-const heart='<svg viewBox="0 0 24 24"><path d="M20.8 8.6a5 5 0 0 0-7.1 0L12 10.3l-1.7-1.7a5 5 0 0 0-7.1 7.1L12 24l8.8-8.3a5 5 0 0 0 0-7.1Z"/></svg>';
-const img=(id,w=600)=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=72`;
-let filter="all";
-
-function cardHTML(o){
-  return `<article class="card" data-cause="${o.cause}" data-region="${o.region}" data-id="${o.id}">
-    <div class="card-img"><img loading="lazy" src="${img(o.img)}" alt="${o.t}">
-      <button class="card-save" onclick="event.stopPropagation();this.classList.toggle('on')" aria-label="Guardar">${heart}</button>
-      <span class="card-cad">${o.cad}</span></div>
-    <div class="card-body">
-      <span class="card-cause"><svg viewBox="0 0 24 24" fill="none">${CICON[o.cause]}</svg>${CAUSE[o.cause]}</span>
-      <h3>${o.t}</h3>
-      <div class="meta">${o.town} · ${o.when}</div>
-      <div class="card-foot">${o.vet?'<span class="tag-vet">Requer verificação</span>':'<span></span>'}<span class="spots">${o.spots} vaga${o.spots>1?'s':''}</span></div>
-    </div></article>`;
-}
-function render(){
-  const g=document.getElementById('grid');
-  const list=OPP.filter(o=>filter==='all'||o.cause===filter||o.region===filter);
-  g.innerHTML=list.map(cardHTML).join('');
-  document.getElementById('count').textContent=list.length+' oportunidades';
-  if(window.gsap)gsap.from('.card',{opacity:0,y:24,duration:.5,stagger:.06,ease:'power2.out'});
-}
-document.getElementById('filters').addEventListener('click',e=>{
-  const b=e.target.closest('.fchip');if(!b)return;
-  document.querySelectorAll('.fchip').forEach(x=>x.classList.remove('on'));
-  b.classList.add('on');filter=b.dataset.f;render();
-});
-
-// AI match
-const sel={zona:null,quando:null,gosto:null};
-document.querySelectorAll('.chips').forEach(group=>{
-  group.addEventListener('click',e=>{
-    const c=e.target.closest('.chip');if(!c)return;
-    group.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));
-    c.classList.add('on');sel[group.dataset.q]=c.dataset.v;
-  });
-});
-function runMatch(){
-  const scored=OPP.map(o=>{let s=0;
-    if(sel.zona&&sel.zona!=='any'){s+=o.region===sel.zona?3:(o.region==='remoto'?1:0);}else s+=1;
-    if(sel.gosto)s+=o.cause===sel.gosto?3:0;
-    if(sel.quando)s+=(o.time.includes(sel.quando)||o.time.includes('flex'))?2:0;
-    s+=o.spots>0?.5:0;return{o,s};
-  }).sort((a,b)=>b.s-a.s).slice(0,2);
-  const why=o=>{const r=[];if(sel.zona&&sel.zona!=='any'&&o.region===sel.zona)r.push('na sua zona');if(sel.gosto&&o.cause===sel.gosto)r.push('o que gosta de fazer');if(sel.quando&&(o.time.includes(sel.quando)))r.push('na sua disponibilidade');return r.length?'Combina com '+r.join(' + '):'Uma boa primeira oportunidade';};
-  const box=document.getElementById('matchResult');
-  box.style.display='grid';
-  box.innerHTML=scored.map(({o})=>`<a href="#board" class="mr-card" onclick="highlight(${o.id})">
-    <img class="thumb" src="${img(o.img,200)}" alt=""><div><div class="t">${o.t}</div><div class="why">✦ ${why(o)}</div><div class="meta">${o.town} · ${o.when}</div></div></a>`).join('');
-  if(window.gsap)gsap.from('.mr-card',{opacity:0,y:16,duration:.45,stagger:.1});
-}
-function highlight(id){
-  filter='all';document.querySelectorAll('.fchip').forEach(x=>x.classList.remove('on'));document.querySelector('.fchip[data-f=all]').classList.add('on');render();
-  setTimeout(()=>{const el=document.querySelector(`.card[data-id="${id}"]`);if(el){el.classList.add('match-hit');el.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>el.classList.remove('match-hit'),2600);}},120);
-}
-
-// PEOPLE BOARD
 const SENIORS=[
  {id:1,name:"Dona Amélia",age:82,town:"Beja",region:"alentejo",bio:"Foi costureira a vida toda. Vive só desde que enviuvou e adora falar do tempo em que cosia para a vila.",anjos:1,needs:[["companhia","Companhia à tarde","1× por semana"],["apoio","Ajuda a ler cartas e receitas","quando precisa"]]},
- {id:2,name:"Sr. Joaquim",age:78,town:"Serpa",region:"alentejo",bio:"Antigo trabalhador rural. Os filhos emigraram e ele tem dificuldade em chegar às consultas sozinho.",anjos:0,needs:[["boleia","Boleia ao centro de saúde","1× por mês"],["companhia","Conversa no caminho","quando puder"]]},
+ {id:2,name:"Sr. Joaquim",age:78,town:"Serpa",region:"alentejo",bio:"Antigo trabalhador rural. Os filhos emigraram e tem dificuldade em chegar às consultas sozinho.",anjos:0,needs:[["boleia","Boleia ao centro de saúde","1× por mês"],["companhia","Conversa no caminho","quando puder"]]},
  {id:3,name:"Dona Rosa",age:85,town:"Castro Verde",region:"alentejo",bio:"O mercado de sexta é o seu programa da semana, mas já não consegue carregar os sacos sozinha.",anjos:1,needs:[["apoio","Companhia no mercado","1× por semana"],["evento","Vir aos convívios","2× por mês"]]},
  {id:4,name:"Dona Iva",age:80,town:"Tavira",region:"algarve",bio:"Gosta de passear à beira-rio ao fim da tarde, mas tem medo de cair se for sozinha.",anjos:0,needs:[["companhia","Passeios acompanhados","2× por semana"]]},
  {id:5,name:"Sr. Manuel",age:88,town:"Faro",region:"algarve",bio:"Quase sem família por perto. Passa dias inteiros sem falar com ninguém.",anjos:2,needs:[["companhia","Chamadas de companhia","semanal"],["boleia","Boleia a recados","quando precisa"]]},
  {id:6,name:"Dona Lurdes",age:79,town:"Moura",region:"alentejo",bio:"Cheia de histórias e de vontade de conviver — só lhe falta companhia para sair de casa.",anjos:1,needs:[["evento","Vir aos lanches-convívio","2× por mês"],["companhia","Tardes de conversa","1× por semana"]]},
 ];
+const CAUSE={companhia:"Companhia",boleia:"Boleia",evento:"Convívio",apoio:"Apoio",admin:"Bastidores"};
+const CICON={companhia:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/>',boleia:'<path d="M5 17h14M6 17l1-5h10l1 5M7 12V8h10v4M7 17v2M17 17v2"/>',evento:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/>',apoio:'<path d="M20.8 8.6a5 5 0 0 0-7.1 0L12 10.3l-1.7-1.7a5 5 0 0 0-7.1 7.1L12 24l8.8-8.3a5 5 0 0 0 0-7.1Z"/>',admin:'<path d="M3 7h18M3 12h18M3 17h12"/>'};
+const heart='<svg viewBox="0 0 24 24"><path d="M20.8 8.6a5 5 0 0 0-7.1 0L12 10.3l-1.7-1.7a5 5 0 0 0-7.1 7.1L12 24l8.8-8.3a5 5 0 0 0 0-7.1Z"/></svg>';
+const img=(id,w=600)=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=72`;
 const initials=n=>n.replace('Dona ','').replace('Sr. ','').trim()[0];
-let pfilter='all';
-function pcardHTML(p,i){
-  const chips=p.needs.map(n=>`<span class="nchip"><svg viewBox="0 0 24 24" fill="none">${CICON[n[0]]}</svg>${n[1]}</span>`).join('');
-  return `<article class="pcard" data-region="${p.region}" data-needs="${p.needs.map(n=>n[0]).join(' ')}" onclick="openSenior(${p.id})">
-    <div class="pcard-top"><div class="pavatar ${i%2?'g':''}">${initials(p.name)}</div><div><h3>${p.name}, ${p.age}</h3><span class="pmeta">${p.town}</span></div></div>
-    <p class="pbio">${p.bio}</p><div class="pneeds">${chips}</div>
-    <div class="pcard-foot"><span class="panjos">${p.anjos?p.anjos+' Anjo'+(p.anjos>1?'s já ajudam':' já ajuda'):'Ainda sem Anjo'}</span><span class="plink">Ver o que precisa →</span></div>
-  </article>`;
-}
-function renderPeople(){
-  const list=SENIORS.filter(p=>pfilter==='all'||p.region===pfilter||p.needs.some(n=>n[0]===pfilter));
-  document.getElementById('pgrid').innerHTML=list.map((p,i)=>pcardHTML(p,i)).join('');
-  if(window.gsap)gsap.from('.pcard',{opacity:0,y:24,duration:.5,stagger:.06,ease:'power2.out'});
-}
+let filter="all",pfilter="all";
+
+function cardHTML(o){return `<article class="card" data-cause="${o.cause}" data-region="${o.region}" data-id="${o.id}">
+  <div class="card-img"><img loading="lazy" src="${img(o.img)}" alt="${o.t}"><button class="card-save" onclick="event.stopPropagation();this.classList.toggle('on')" aria-label="Guardar">${heart}</button><span class="card-cad">${o.cad}</span></div>
+  <div class="card-body"><span class="card-cause"><svg viewBox="0 0 24 24" fill="none">${CICON[o.cause]}</svg>${CAUSE[o.cause]}</span><h3>${o.t}</h3><div class="meta">${o.town} · ${o.when}</div>
+  <div class="card-foot">${o.vet?'<span class="tag-vet">Requer verificação</span>':'<span></span>'}<span class="spots">${o.spots} vaga${o.spots>1?'s':''}</span></div></div></article>`;}
+function render(){const list=OPP.filter(o=>filter==='all'||o.cause===filter||o.region===filter);document.getElementById('grid').innerHTML=list.map(cardHTML).join('');document.getElementById('count').textContent=list.length+' oportunidades';if(window.gsap)gsap.from('.card',{opacity:0,y:20,duration:.5,stagger:.05,ease:'power2.out'});}
+document.getElementById('filters').addEventListener('click',e=>{const b=e.target.closest('.fchip');if(!b)return;document.querySelectorAll('#filters .fchip').forEach(x=>x.classList.remove('on'));b.classList.add('on');filter=b.dataset.f;render();});
+
+function pcardHTML(p,i){const chips=p.needs.map(n=>`<span class="nchip"><svg viewBox="0 0 24 24" fill="none">${CICON[n[0]]}</svg>${n[1]}</span>`).join('');
+  return `<article class="pcard" data-region="${p.region}" data-needs="${p.needs.map(n=>n[0]).join(' ')}" onclick="openSenior(${p.id})"><div class="pcard-top"><div class="pavatar ${i%2?'g':''}">${initials(p.name)}</div><div><h3>${p.name}, ${p.age}</h3><span class="pmeta">${p.town}</span></div></div><p class="pbio">${p.bio}</p><div class="pneeds">${chips}</div><div class="pcard-foot"><span class="panjos">${p.anjos?p.anjos+' Anjo'+(p.anjos>1?'s já ajudam':' já ajuda'):'Ainda sem Anjo'}</span><span class="plink">Ver o que precisa →</span></div></article>`;}
+function renderPeople(){const list=SENIORS.filter(p=>pfilter==='all'||p.region===pfilter||p.needs.some(n=>n[0]===pfilter));document.getElementById('pgrid').innerHTML=list.map((p,i)=>pcardHTML(p,i)).join('');if(window.gsap)gsap.from('.pcard',{opacity:0,y:20,duration:.5,stagger:.05,ease:'power2.out'});}
 document.getElementById('pfilters').addEventListener('click',e=>{const b=e.target.closest('.fchip');if(!b)return;document.querySelectorAll('#pfilters .fchip').forEach(x=>x.classList.remove('on'));b.classList.add('on');pfilter=b.dataset.pf;renderPeople();});
-function openSenior(id){
-  const p=SENIORS.find(x=>x.id===id);if(!p)return;
-  const first=p.name.replace('Dona ','').replace('Sr. ','').split(' ')[0];
-  const needs=p.needs.map(n=>`<div class="need-row"><div class="need-ic"><svg viewBox="0 0 24 24" fill="none">${CICON[n[0]]}</svg></div><div><div class="nt">${n[1]}</div><div class="nc">${n[2]}</div></div><button class="btn btn-primary" onclick="alert('Obrigado! Vamos pô-lo em contacto para ajudar a/o ${first} com: ${n[1]}.')">Quero ajudar</button></div>`).join('');
-  document.getElementById('seniorBody').innerHTML=`<button class="modal-x" onclick="closeSenior()" aria-label="Fechar">✕</button>
-    <div class="modal-head"><div class="pavatar" style="width:62px;height:62px;font-size:23px">${initials(p.name)}</div><div><h3>${p.name}, ${p.age}</h3><span class="pmeta">${p.town} · ${p.region==='algarve'?'Algarve':'Baixo Alentejo'}</span></div></div>
-    <p class="modal-bio">${p.bio}</p>
-    <p class="eyebrow" style="margin-top:22px;color:var(--gold-d)">O que ${first} precisa</p>${needs}
-    <p class="pnote" style="margin-top:18px"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>Escolha uma necessidade. Falamos consigo, fazemos a verificação e apresentamo-lo a/o ${first}.</p>`;
-  document.getElementById('seniorModal').classList.add('open');document.body.style.overflow='hidden';
-}
+
+const sel={zona:null,quando:null,gosto:null};
+document.querySelectorAll('.chips').forEach(g=>g.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;g.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');sel[g.dataset.q]=c.dataset.v;}));
+function runMatch(){const scored=OPP.map(o=>{let s=0;if(sel.zona&&sel.zona!=='any'){s+=o.region===sel.zona?3:(o.region==='remoto'?1:0);}else s+=1;if(sel.gosto)s+=o.cause===sel.gosto?3:0;if(sel.quando)s+=(o.time.includes(sel.quando)||o.time.includes('flex'))?2:0;s+=o.spots>0?.5:0;return{o,s};}).sort((a,b)=>b.s-a.s).slice(0,2);
+  const why=o=>{const r=[];if(sel.zona&&sel.zona!=='any'&&o.region===sel.zona)r.push('na sua zona');if(sel.gosto&&o.cause===sel.gosto)r.push('o que gosta');if(sel.quando&&o.time.includes(sel.quando))r.push('a sua disponibilidade');return r.length?'Combina com '+r.join(' + '):'Uma boa primeira oportunidade';};
+  const box=document.getElementById('matchResult');box.style.display='grid';box.innerHTML=scored.map(({o})=>`<a href="#board" class="mr-card" onclick="highlight(${o.id})"><img src="${img(o.img,200)}" alt=""><div><div class="t">${o.t}</div><div class="why">✦ ${why(o)}</div><div class="m">${o.town} · ${o.when}</div></div></a>`).join('');if(window.gsap)gsap.from('.mr-card',{opacity:0,y:14,duration:.45,stagger:.1});}
+function highlight(id){filter='all';document.querySelectorAll('#filters .fchip').forEach(x=>x.classList.remove('on'));document.querySelector('#filters .fchip[data-f=all]').classList.add('on');render();setTimeout(()=>{const el=document.querySelector(`.card[data-id="${id}"]`);if(el){el.classList.add('match-hit');el.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>el.classList.remove('match-hit'),2600);}},120);}
+
+function openSenior(id){const p=SENIORS.find(x=>x.id===id);if(!p)return;const first=p.name.replace('Dona ','').replace('Sr. ','').split(' ')[0];
+  const needs=p.needs.map(n=>`<div class="need-row"><div class="need-ic"><svg viewBox="0 0 24 24" fill="none">${CICON[n[0]]}</svg></div><div><div class="nt">${n[1]}</div><div class="nc">${n[2]}</div></div><button class="btn btn-primary" onclick="alert('Obrigado! Vamos pô-lo em contacto para ajudar ${first} com: ${n[1]}.')">Quero ajudar</button></div>`).join('');
+  document.getElementById('seniorBody').innerHTML=`<button class="modal-x" onclick="closeSenior()" aria-label="Fechar">✕</button><div class="modal-head"><div class="pavatar" style="width:60px;height:60px;font-size:22px">${initials(p.name)}</div><div><h3>${p.name}, ${p.age}</h3><span class="pmeta">${p.town} · ${p.region==='algarve'?'Algarve':'Baixo Alentejo'}</span></div></div><p class="modal-bio">${p.bio}</p><p class="eyebrow gold" style="margin-top:20px">O que ${first} precisa</p>${needs}<p class="pnote" style="margin-top:16px"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>Escolha uma necessidade. Falamos consigo, fazemos a verificação e apresentamo-lo a ${first}.</p>`;
+  document.getElementById('seniorModal').classList.add('open');document.body.style.overflow='hidden';}
 function closeSenior(){document.getElementById('seniorModal').classList.remove('open');document.body.style.overflow='';}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSenior();});
 
-render();
-renderPeople();
-// nav shadow + mobile menu (functional, always on)
-const _nav=document.querySelector('.nav');
-addEventListener('scroll',()=>_nav.classList.toggle('scrolled',scrollY>16),{passive:true});
-const _b=document.getElementById('burger'),_mm=document.getElementById('mobileMenu');
-if(_b)_b.addEventListener('click',()=>_mm.classList.toggle('open'));
-if(_mm)_mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>_mm.classList.remove('open')));
-
+render();renderPeople();
+const _nav=document.querySelector('.nav');addEventListener('scroll',()=>_nav.classList.toggle('scrolled',scrollY>14),{passive:true});
+const _b=document.getElementById('burger'),_mm=document.getElementById('mobileMenu');if(_b)_b.addEventListener('click',()=>_mm.classList.toggle('open'));if(_mm)_mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>_mm.classList.remove('open')));
 window.addEventListener('load',()=>{
   const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   if(!window.gsap||reduce){document.querySelectorAll('.reveal').forEach(e=>{e.style.opacity=1;e.style.transform='none';});return;}
   gsap.registerPlugin(ScrollTrigger);
-  // below-the-fold reveals (hero handled by its own sequence)
-  gsap.utils.toArray('.reveal').forEach(el=>{ if(el.closest('.hero'))return;
-    gsap.to(el,{opacity:1,y:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}});
-  });
-  // hero load sequence
-  gsap.timeline({defaults:{ease:'power3.out'}})
-    .to('.hero .eyebrow',{opacity:1,y:0,duration:.6})
-    .to('.hero h1',{opacity:1,y:0,duration:.9},'-=.35')
-    .to('.hero .lead',{opacity:1,y:0,duration:.6},'-=.55')
-    .to('.hero-cta',{opacity:1,y:0,duration:.6},'-=.45')
-    .to('.hero-meta',{opacity:1,y:0,duration:.6},'-=.5')
-    .to('.hero-art',{opacity:1,y:0,duration:.95},'-=.7');
-  // cursor parallax on hero art (desktop only)
-  if(matchMedia('(min-width:920px)').matches){
-    const art=document.querySelector('.hero-art'),phs=[...art.querySelectorAll('.ph')];
-    const qx=phs.map(p=>gsap.quickTo(p,'xPercent',{duration:.7,ease:'power3'})),qy=phs.map(p=>gsap.quickTo(p,'yPercent',{duration:.7,ease:'power3'}));
-    art.addEventListener('mousemove',e=>{const r=art.getBoundingClientRect(),dx=(e.clientX-r.left)/r.width-.5,dy=(e.clientY-r.top)/r.height-.5;phs.forEach((p,i)=>{const d=(i+1)*2.4;qx[i](dx*d);qy[i](dy*d);});});
-    art.addEventListener('mouseleave',()=>phs.forEach((p,i)=>{qx[i](0);qy[i](0);}));
-  }
-  // stat count-up
-  document.querySelectorAll('.stat b').forEach(el=>{
-    const raw=el.textContent.trim(),m=raw.match(/[\d ]*\d/);if(!m)return;
-    const num=parseInt(m[0].replace(/\D/g,''),10);if(!num)return;
-    const pre=raw.slice(0,m.index),suf=raw.slice(m.index+m[0].length),o={v:0};
-    ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:()=>gsap.to(o,{v:num,duration:1.5,ease:'power2.out',onUpdate:()=>el.textContent=pre+Math.round(o.v).toLocaleString('pt-PT')+suf})});
-  });
+  gsap.utils.toArray('.reveal').forEach(el=>{if(el.closest('.hero'))return;gsap.to(el,{opacity:1,y:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}});});
+  gsap.timeline({defaults:{ease:'power3.out'}}).to('.hero .eyebrow',{opacity:1,y:0,duration:.6}).to('.hero h1',{opacity:1,y:0,duration:.85},'-=.35').to('.hero .lead',{opacity:1,y:0,duration:.6},'-=.55').to('.hero-cta',{opacity:1,y:0,duration:.6},'-=.45').to('.hero-trust',{opacity:1,y:0,duration:.6},'-=.5').to('.mock',{opacity:1,y:0,duration:.9},'-=.7');
+  if(matchMedia('(min-width:940px)').matches){const m=document.getElementById('mock'),panel=m.querySelector('.mock-panel');const qx=gsap.quickTo(panel,'rotationY',{duration:.8,ease:'power3'}),qy=gsap.quickTo(panel,'rotationX',{duration:.8,ease:'power3'});m.addEventListener('mousemove',e=>{const r=m.getBoundingClientRect();qx(((e.clientX-r.left)/r.width-.5)*-16-9);qy(((e.clientY-r.top)/r.height-.5)*10+4);});m.addEventListener('mouseleave',()=>{qx(-9);qy(4);});}
+  document.querySelectorAll('.stat b').forEach(el=>{const raw=el.textContent.trim(),mm=raw.match(/[\d ]*\d/);if(!mm)return;const num=parseInt(mm[0].replace(/\D/g,''),10);if(!num)return;const pre=raw.slice(0,mm.index),suf=raw.slice(mm.index+mm[0].length),o={v:0};ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:()=>gsap.to(o,{v:num,duration:1.5,ease:'power2.out',onUpdate:()=>el.textContent=pre+Math.round(o.v).toLocaleString('pt-PT')+suf})});});
 });
 </script>
 </body>
